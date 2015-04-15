@@ -26,23 +26,144 @@ def main():
 
 #define the numbers for each column
 
-def column_numbers(document):
-    column_number_from_name = {}
-    campaign_name_column_number= []
-    age_column_number = []
+class define_column_numbers():
+    """Define the column numbers for each variable"""
+    Placements = [ "NFM","NFD"]
+    Targeting = ["Broad","Lookalike","Lookalike","LL","Convla","%"]
+    Gender = ["M","W","A"]
+    Country = ["US","TW","NZ","NO","AU","ZA","GB","CH","DK"]
 
-    for count,item in enumerate(document):
+    def __init__(self):
+        self.name = 'Initial Excel file'
 
-        column_number_from_name[item]=count
-        if item == "Campaign Name":
-            campaign_name_column_number.append(count)
-        elif item == "Age":
-            age_column_number.append(count)
-        else:
-            pass
-    return column_number_from_name
+    def column_numbers(self, document):
+        column_number_from_name = {}
 
-print column_numbers(HH_13)
+        for count,item in enumerate(document):
+            if item in column_number_from_name:
+                pass
+            else:
+                column_number_from_name[item]=count
+        return column_number_from_name
+
+    def installs_1_day_post_view(self, document):
+        self.name = 'Start Date Column Number'
+        installs_1_day_post_view = {}
+
+        for count, item in enumerate (document):
+
+            if item == 'Mobile App Installs [1 Day After Viewing]':
+                print "test"
+                installs_1_day_post_view[item]=count
+                break
+            else:
+                return " no installs 1 day post view column found"
+        return installs_1_day_post_view
+
+    def installs_28_day_post_click(self, document):
+        installs_28_day_post_click = {}
+        for count, item in enumerate(document):
+            if item == "Mobile App Installs [28 Days After Clicking]":
+                installs_28_day_post_click[item]=count
+                break
+            else:
+                return "No 28 day post click column found"
+        return installs_28_day_post_click
+
+    def gender(self, document):
+        gender = {}
+        for count, item in enumerate(document):
+            if item == 'Gender':
+                gender[item]=count
+                break
+            else:
+                return "No gender column found"
+        return gender
+
+    def age(self, document):
+        age = {}
+        for count, item in enumerate(document):
+            if item == 'Age':
+                age[item]=count
+                break
+            else:
+                return "No age column found"
+        return age
+
+    def campaign_name(self, document):
+        campaign_name = {}
+        for count, item in enumerate(document):
+            if item == "Campaign Name":
+                campaign_name[item]=count
+            else:
+                return "No campaign_name column found"
+        return campaign_name
+
+    def impressions(self,document):
+        impressions = {}
+        for count, item in enumerate(document):
+            if item == "Impressions":
+                impressions[item] = count
+                break
+            else:
+                return "No impression column found"
+        return impressions
+
+    def ad_name(self,document):
+        ad_name = {}
+        for count, item in enumerate(document):
+            if item == "Ad Name":
+                ad_name[item]=count
+                break
+            else:
+                return "no ad_name column found"
+        return ad_name
+
+    def clicks(self,document):
+        clicks= {}
+        for count, item in enumerate(document):
+            if item == "Clicks":
+                clicks[item]=count
+                break
+            else:
+                return "No clicks column found"
+        return clicks
+
+    def installs_1_day_post_click(self,document):
+        installs_1_day_post_click = {}
+        for count, item in enumerate(document):
+            if item == " Mobile App Installs [1 Day After Clicking]":
+                installs_1_day_post_click[item]=count
+                break
+            else:
+                return "No 1 day post click column found"
+        return installs_1_day_post_click
+
+excel = define_column_numbers()
+print excel.column_numbers(HH_13)
+print excel.installs_1_day_post_view(HH_13)
+print excel.installs_28_day_post_click(HH_13)
+print excel.gender(HH_13)
+print excel.age(HH_13)
+print excel.campaign_name(HH_13)
+print excel.impressions(HH_13)
+print excel.ad_name(HH_13)
+print excel.clicks(HH_13)
+print excel.installs_1_day_post_click(HH_13)
+
+
+
+
+
+# if item == "Campaign Name":
+#                 campaign_name_column_number.append(count)
+#             elif item == "Age":
+#                 age_column_number.append(count)
+#
+#     campaign_name_column_number= []
+#     age_column_number = []
+
+
 
 
 all_start_dates = HH_13['\xef\xbb\xbf"Start Date"']
@@ -80,18 +201,15 @@ unique_dates = []
 
 
 
+#
+# figure_1 = plt.figure()
+# ax1 = figure_1.add_subplot(2,2,1)
+# ax2 = figure_1.add_subplot(2,2,2)
+# plt.plot(randn(50).cumsum(), 'k--')
+# figure_1.show()
+# plt.show()
 
-figure_1 = plt.figure()
-ax1 = figure_1.add_subplot(2,2,1)
-ax2 = figure_1.add_subplot(2,2,2)
-plt.plot(randn(50).cumsum(), 'k--')
-figure_1.show()
-plt.show()
 
-Placements = [ "NFM","NFD"]
-Targeting = ["Broad","Lookalike","Lookalike","LL","Convla","%"]
-Gender = ["M","W","A"]
-Country = ["US","TW","NZ","NO","AU","ZA","GB","CH","DK"]
 
 available_countries = ()
 #for delimiter in HH_13[]
